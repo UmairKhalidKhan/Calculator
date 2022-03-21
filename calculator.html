@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        box-sizing: border-box;
+    }
+    .calc{
+        border: 1px solid black;
+        margin: auto;
+        margin-top: 5vw;
+        padding: 2%;
+        border-collapse: separate;
+        border-spacing: 10px;
+        border-radius: 2%;
+        background-color: #233142;
+    }
+    #disp{
+        background-color: lightgray;
+        width: 100%;
+        margin: 0px;
+        height: 5vw;
+        font-size: xx-large;
+
+    }
+    td {
+        border: 1px solid black;
+        text-align: center;
+        align-items: center;
+        width: 3vw;
+        height:2vw;
+        padding: 5px;
+        font-size: larger;
+        border-radius: 5%;
+        background-color: white;
+    }
+    td:hover{
+        transition: 0.1s;
+        background-color: grey;
+        color: white;
+    }
+    input{
+        all: inherit;
+        border: 0;
+        margin: 0%;
+    }
+</style>
+<script>
+    var value;
+    function MC(){
+        value = null;
+    }
+    function MS(val){
+        value = val;
+    }
+    function MR(){
+        return value;
+    }
+    function Madd(val){
+        value = parseInt(value) + parseInt(val);
+        return value;
+    }
+
+function calinverse(val){
+    val = 1/val;
+    return val;
+ }
+ 
+function sqr(val){
+    var input = parseInt(val);
+    input = input*input;
+    return input;
+}
+function sqrroot(val){
+    var input = parseInt(val);
+    input = Math.pow(input, 0.5);
+    return val;
+}
+function signchange(val){
+    var input = val;
+    if(input[0] != '-'){
+        input = '-' + input;
+    }else{
+        input = input.substr(1, val.length());
+    }
+    return input;
+}
+</script>
+<body>
+    <form name="calculator">
+    <table class="calc">
+        <tr>
+            <td colspan="5" style="overflow: hidden; text-align: right; padding: 0%;">
+                <input name="disp" id="disp" type="text">
+            </td>
+        </tr>
+        <tr>
+            <td><input type="button" name="mc" value="MC" onclick="MC()"></td>
+            <td><input type="button" name="zero" value="0" onclick="calculator.disp.value += 0"></td>
+            <td><input type="button" name="one" value="1" onclick="calculator.disp.value += 1"></td>
+            <td><input type="button" name="two" value="2" onclick="calculator.disp.value += 2"></td>
+            <td><input type="button" name="plus" value="+" onclick="calculator.disp.value += '+'"></td>
+        </tr>
+        <tr>
+            <td><input type="button" name="ms" value="MS" onclick="MS(calculator.disp.value)"></td>
+            <td><input type="button" name="three" value="3" onclick="calculator.disp.value += 3"></td>
+            <td><input type="button" name="four" value="4" onclick="calculator.disp.value += 4"></td>
+            <td><input type="button" name="five" value="5" onclick="calculator.disp.value += 5"></td>
+            <td><input type="button" name="sub" value="-" onclick="calculator.disp.value += '-' "></td>
+        </tr>
+        <tr>
+            <td><input type="button" name="mr" value="MR" onclick="calculator.disp.value += MR()"></td>
+            <td><input type="button" name="six" value="6" onclick="calculator.disp.value += 6"></td>
+            <td><input type="button" name="seven" value="7" onclick="calculator.disp.value += 7"></td>
+            <td><input type="button" name="eight" value="8" onclick="calculator.disp.value += 8"></td>
+            <td><input type="button" name="mul" value="x" onclick="calculator.disp.value += '*'"></td>
+        </tr>
+        <tr>
+            <td><input type="button" name="m+" value="M+" onclick="calculator.disp.value = Madd(calculator.disp.value)"></td>
+            <td><input type="button" name="nine" value="9" onclick="calculator.disp.value += 9"></td>
+            <td><input type="button" name="nine" value="&#177" onclick="calculator.disp.value = signchange(calculator.disp.value)"></td>
+            <td><input type="button" name="equal" value="=" onclick="calculator.disp.value = eval(calculator.disp.value) "></td>
+            <td><input type="button" name="divi" value="/" onclick="calculator.disp.value += '/'"></td>
+        </tr>
+        <tr>
+            <td><input type="button" name="invert" value="1/x" onclick="calculator.disp.value = calinverse(calculator.disp.value)"></td>
+            <td><input type="button" name="decimal" value="." onclick="calculator.disp.value += '.' "></td>
+            <td><input type="button" name="square" value="x^2" onclick="calculator.disp.value = sqr(calculator.disp.value)"></td>
+            <td><input type="button" name="root" value="√x" onclick="calculator.disp.value = root(calculator.disp.value)"></td>
+            <td><input type="button" name="clear" value="C" onclick="calculator.disp.value = ''"></td>
+        </tr>
+    </table>
+    </form>
+</body>
+
+</html>
