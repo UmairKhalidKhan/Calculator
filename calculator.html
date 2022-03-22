@@ -32,10 +32,10 @@
         border: 1px solid black;
         text-align: center;
         align-items: center;
-        width: 3vw;
-        height:2vw;
-        padding: 5px;
-        font-size: larger;
+        width: 4vw;
+        height:3vw;
+        padding: 2px;
+        font-size: l;
         border-radius: 5%;
         background-color: white;
     }
@@ -79,14 +79,15 @@ function sqr(val){
 function sqrroot(val){
     var input = parseInt(val);
     input = Math.pow(input, 0.5);
-    return val;
+    input = input.toString();
+    return input;
 }
 function signchange(val){
     var input = val;
     if(input[0] != '-'){
         input = '-' + input;
-    }else{
-        input = input.substr(1, val.length());
+    }else if (input[0] == '-'){
+        input = input.substr(1, val.length);
     }
     return input;
 }
@@ -131,7 +132,7 @@ function signchange(val){
             <td><input type="button" name="invert" value="1/x" onclick="calculator.disp.value = calinverse(calculator.disp.value)"></td>
             <td><input type="button" name="decimal" value="." onclick="calculator.disp.value += '.' "></td>
             <td><input type="button" name="square" value="x^2" onclick="calculator.disp.value = sqr(calculator.disp.value)"></td>
-            <td><input type="button" name="root" value="√x" onclick="calculator.disp.value = root(calculator.disp.value)"></td>
+            <td><input type="button" name="root" value="√x" onclick="calculator.disp.value = sqrroot(calculator.disp.value)"></td>
             <td><input type="button" name="clear" value="C" onclick="calculator.disp.value = ''"></td>
         </tr>
     </table>
